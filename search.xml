@@ -1,6 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Vue3基础</title>
+    <url>/2023/04/15/Vue3%E5%9F%BA%E7%A1%80/</url>
+    <content><![CDATA[<p><img src="https://cug.oss-cn-guangzhou.aliyuncs.com/assets/image-20230415231055729.png" alt="image-20230415231055729"></p>
+<span id="more"></span>
+
+<h1 id="使用Vue创建项目"><a href="#使用Vue创建项目" class="headerlink" title="使用Vue创建项目"></a>使用Vue创建项目</h1><p>1.首先cd到工作目录当中，然后使用下面的语句，搭建Vue的开发框架</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">npm create vue</span><br></pre></td></tr></table></figure>
+
+<p>2.然后根据项目需要选择对应模块，我这边作为熟悉项目框架，所以都选择了no</p>
+<p><img src="https://cug.oss-cn-guangzhou.aliyuncs.com/assets/image-20230416000823071.png" alt="image-20230416000823071"></p>
+<p>3.这时已经创建好了一个项目，但是环境还没进行安装，所以还需要使用下面的指令，对环境进行安装，并将项目跑起来</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 安装依赖</span></span><br><span class="line">npm install</span><br><span class="line"></span><br><span class="line"><span class="comment">//启动项目</span></span><br><span class="line">npm run dev</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>4.我们删除其他页面，并新建一个App.vue页面，并对页面进行简单编辑与显示</p>
+<p><img src="https://cug.oss-cn-guangzhou.aliyuncs.com/assets/image-20230416003556697.png" alt="image-20230416003556697"></p>
+<hr>
+<h1 id="Vue基础知识"><a href="#Vue基础知识" class="headerlink" title="Vue基础知识"></a>Vue基础知识</h1><h2 id="main-js中的概念"><a href="#main-js中的概念" class="headerlink" title="main.js中的概念"></a>main.js中的概念</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; createApp &#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">App</span> <span class="keyword">from</span> <span class="string">&#x27;./App.vue&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">	App.vue是根组件</span></span><br><span class="line"><span class="comment">		- CreateApp(App)：将根组件关联到应用上</span></span><br><span class="line"><span class="comment">			- 会返回一个应用的实例</span></span><br><span class="line"><span class="comment">		- app.mount(&#x27;#app&#x27;)：将应用挂载到页面中</span></span><br><span class="line"><span class="comment">			- 会返回一个根组件的实例，组件的实例通常命名为vm</span></span><br><span class="line"><span class="comment">			- 组件实例是一个Proxy()对象（代理对象）</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = <span class="title function_">createApp</span>(<span class="title class_">App</span>)</span><br><span class="line"><span class="keyword">const</span> vm = app.<span class="title function_">mount</span>(<span class="string">&#x27;#app&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="组件中的方法：methods"><a href="#组件中的方法：methods" class="headerlink" title="组件中的方法：methods"></a>组件中的方法：methods</h2><p><strong>methods</strong> 用来指定实例对象中的方法</p>
+<ul>
+<li>它是一个<strong>对象</strong>，可以在它里面定义多个方法</li>
+<li>这些方法最终会被挂载到组件实例上</li>
+<li>可以直接通过组件实例来调用这些方法</li>
+<li>methods 中函数的<strong>this会被自动绑定为组件实例</strong></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line"><span class="attr">methods</span>:&#123;</span><br><span class="line">        <span class="title function_">test</span>(<span class="params"></span>)&#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>)   <span class="comment">//组件实例， vm</span></span><br><span class="line">            <span class="title function_">alert</span>(<span class="string">&#x27;实例对象的方法&#x27;</span>)</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="title function_">changeMsg</span>(<span class="params"></span>)&#123;</span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">msg</span> = <span class="string">&quot;新的消息！&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    </span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;&#123; msg &#125;&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">&quot;changeMsg&quot;</span>&gt;</span>点我一下<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<h2 id="组件中的计算属性：computed"><a href="#组件中的计算属性：computed" class="headerlink" title="组件中的计算属性：computed"></a>组件中的计算属性：computed</h2><p><strong>computed</strong> 用来指定计算属性</p>
+<p>在计算属性getter中，尽量<strong>只做读取</strong>相关的逻辑，不要执行哪些会产生（副）作用的代码</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="attr">computed</span>:&#123;</span><br><span class="line">    属性名：getter</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>计算属性，只在其依赖的数据发生变化时才会重新执行</li>
+<li><strong>会对数据进行缓存</strong></li>
+<li>可以为计算属性设置setter，使得计算属性可写，但是<strong>不建议这样做</strong></li>
+</ul>
+<h2 id="组合式API（setup）"><a href="#组合式API（setup）" class="headerlink" title="组合式API（setup）"></a>组合式API（setup）</h2><p>组合式API（setup）一般都是放在script标签内部</p>
+<ul>
+<li>使用组合式API，我们可以在script中直接定义变量和函数</li>
+<li>使用组合式API直接<strong>定义的变量就是一个普通变量，不是响应式变量</strong></li>
+<li>通过<strong>reactive函数</strong>可以在setup中<strong>创建一个响应式对象</strong></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;script setup&gt;</span><br><span class="line">    <span class="keyword">import</span> &#123; reactive &#125; <span class="keyword">from</span> <span class="string">&quot;vue&quot;</span></span><br><span class="line">    <span class="keyword">const</span> msg = <span class="string">&quot;组合式API&quot;</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//创建响应式变量</span></span><br><span class="line">    <span class="keyword">const</span> stu = <span class="title function_">reactive</span>(&#123;</span><br><span class="line">        <span class="attr">name</span>:<span class="string">&quot;原&quot;</span></span><br><span class="line">    &#125;)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="响应式代理"><a href="#响应式代理" class="headerlink" title="响应式代理"></a>响应式代理</h2><p><strong>reactive()</strong></p>
+<ul>
+<li>返回一个<strong>对象</strong>的响应式代码</li>
+<li>返回的是一个深层响应式对象</li>
+<li>也可以使用shallowReactive()创建一个浅层响应式对象</li>
+<li>缺点：<strong>只能返回对象的响应式代理！不能处理原始值</strong></li>
+</ul>
+<p><strong>ref()</strong></p>
+<ul>
+<li>接受一个任意值，并返回它的响应式代理</li>
+<li><strong>访问ref对象</strong>时，必须通过 <strong>对象.value</strong>  来访问其中的值</li>
+<li>在模板中，ref对象会被<strong>自动解包</strong>，不需要使用 对象.value.属性名，直接使用 <strong>对象.属性名</strong> 就可以直接访问</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;script setup&gt;</span><br><span class="line">    <span class="keyword">import</span> &#123; reactive,ref &#125; <span class="keyword">from</span> <span class="string">&quot;vue&quot;</span></span><br><span class="line">    <span class="keyword">const</span> msg = <span class="string">&quot;组合式API&quot;</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//创建响应式变量</span></span><br><span class="line">    <span class="keyword">const</span> stu = <span class="title function_">reactive</span>(&#123;</span><br><span class="line">        <span class="attr">name</span>:<span class="string">&quot;原&quot;</span></span><br><span class="line">    &#125;)</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//ref在生成响应式代理时，它是将值包装成了一个对象  0  ---&gt; &#123;value:0&#125;</span></span><br><span class="line">    <span class="keyword">const</span> count = <span class="title function_">ref</span>(<span class="number">0</span>)     <span class="comment">//生成一个0的响应式代理                                                                        </span></span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="v-bind-标签动态属性设置"><a href="#v-bind-标签动态属性设置" class="headerlink" title="v-bind 标签动态属性设置"></a>v-bind 标签动态属性设置</h2><p>对标签的属性进行动态设置时，需要使用到 v-bind 指令，</p>
+<p>v-bind可以简写为  <strong>：</strong></p>
+<p>当我们为一个布尔值设置属性时，如果为<strong>true</strong>则表示元素上<strong>有该属性</strong>，如果为<strong>false</strong>，则元素上<strong>没有该属性</strong>。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;script setup&gt;</span><br><span class="line"><span class="keyword">import</span> &#123; ref &#125; <span class="keyword">from</span> <span class="string">&quot;vue&quot;</span></span><br><span class="line"><span class="keyword">const</span> imgPath = <span class="title function_">ref</span>(<span class="string">&quot;/images/messi.png&quot;</span>)</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">changeImg</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">    imgPath.<span class="property">value</span> = <span class="string">&quot;/images/neymar.png&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> attrs = &#123;</span><br><span class="line">    <span class="attr">id</span>: <span class="string">&quot;box1&quot;</span>,</span><br><span class="line">    <span class="attr">class</span>: <span class="string">&quot;hello&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> attrName = <span class="string">&quot;title&quot;</span></span><br><span class="line"><span class="keyword">const</span> attrValue = <span class="string">&quot;这是一个title属性&quot;</span></span><br><span class="line"><span class="keyword">const</span> isDisabled = <span class="string">&quot;&quot;</span></span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">    <span class="comment">&lt;!-- &lt;button @click=&quot;changeImg&quot;&gt;切换图片&lt;/button&gt; --&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">:</span>[<span class="attr">attrName</span>]=<span class="string">&quot;attrValue&quot;</span> <span class="attr">:src</span>=<span class="string">&quot;imgPath&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;梅西&quot;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">        </span></span><br><span class="line"><span class="language-xml">    //绑定属性组</span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">:</span>=<span class="string">&quot;attrs&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">:disabled</span>=<span class="string">&quot;isDisabled&quot;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+]]></content>
+  </entry>
+  <entry>
     <title>Hello World</title>
     <url>/2023/04/15/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
