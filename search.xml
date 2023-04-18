@@ -12,6 +12,12 @@
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">apt-get install open-vm-tools</span><br><span class="line"></span><br><span class="line">mkdir /mnt/hgfs</span><br><span class="line"></span><br><span class="line">/usr/bin/vmhgfs-fuse .host:/ /mnt/hgfs -o subtype=vmhgfs-fuse,allow_other</span><br></pre></td></tr></table></figure>
 
 <p>3.输出这三行指令后，在主界面的 mnt&#x2F;hgfs&#x2F;  文件夹下可以找到共享的文件夹</p>
+<p>4.设置开机自动挂载</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">gedit /etc/fstab</span><br></pre></td></tr></table></figure>
+
+<p>在文件中加入下面这行代码进程，保存即可</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">.host:/         /mnt/hgfs         fuse.vmhgfs-fuse allow_other,defaults   0       0</span><br></pre></td></tr></table></figure>
+
 <p><a href="https://superuser.com/questions/588304/no-mnt-hgfs-in-ubuntu-guest-under-vmware-fusion">参考网址</a></p>
 <hr>
 <h2 id="VM下设置root账户登录"><a href="#VM下设置root账户登录" class="headerlink" title="VM下设置root账户登录"></a>VM下设置root账户登录</h2><p>1.为root账户设置密码</p>
