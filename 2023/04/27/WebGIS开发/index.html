@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.15.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta property="og:type" content="article">
+<meta property="og:title" content="WebGIS开发">
+<meta property="og:url" content="http://example.com/2023/04/27/WebGIS%E5%BC%80%E5%8F%91/index.html">
+<meta property="og:site_name" content="Z">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cug.oss-cn-guangzhou.aliyuncs.com/assets/image-20230427162522558.png">
+<meta property="og:image" content="https://cug.oss-cn-guangzhou.aliyuncs.com/assets/image-20230427163321046.png">
+<meta property="og:image" content="https://cug.oss-cn-guangzhou.aliyuncs.com/assets/image-20230427164049516.png">
+<meta property="og:image" content="https://cug.oss-cn-guangzhou.aliyuncs.com/assets/image-20230427165216029.png">
+<meta property="og:image" content="https://cug.oss-cn-guangzhou.aliyuncs.com/assets/image-20230427165518598.png">
+<meta property="og:image" content="https://cug.oss-cn-guangzhou.aliyuncs.com/assets/image-20230427170502534.png">
+<meta property="article:published_time" content="2023-04-27T08:23:55.000Z">
+<meta property="article:modified_time" content="2023-04-27T11:01:51.979Z">
+<meta property="article:author" content="LiuZ">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cug.oss-cn-guangzhou.aliyuncs.com/assets/image-20230427162522558.png">
+
+
+<link rel="canonical" href="http://example.com/2023/04/27/WebGIS%E5%BC%80%E5%8F%91/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2023/04/27/WebGIS%E5%BC%80%E5%8F%91/","path":"2023/04/27/WebGIS开发/","title":"WebGIS开发"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>WebGIS开发 | Z</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Z</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8EVue%E3%80%81SuperMap-iClient-for-Leaflet%E6%90%AD%E5%BB%BA%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83"><span class="nav-number">1.</span> <span class="nav-text">基于Vue、SuperMap iClient for Leaflet搭建开发环境</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%90%AD%E5%BB%BAVue%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83"><span class="nav-number">1.1.</span> <span class="nav-text">一、搭建Vue开发环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%AF%BC%E5%85%A5SuperMap-iClient-for-leaflet-SDK"><span class="nav-number">1.2.</span> <span class="nav-text">二、导入SuperMap iClient for leaflet SDK</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">LiuZ</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/04/27/WebGIS%E5%BC%80%E5%8F%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="LiuZ">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Z">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="WebGIS开发 | Z">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          WebGIS开发
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2023-04-27 16:23:55 / 修改时间：19:01:51" itemprop="dateCreated datePublished" datetime="2023-04-27T16:23:55+08:00">2023-04-27</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p><img src="https://cug.oss-cn-guangzhou.aliyuncs.com/assets/image-20230427162522558.png" alt="image-20230427162522558"></p>
+<span id="more"></span>
+
+<h1 id="基于Vue、SuperMap-iClient-for-Leaflet搭建开发环境"><a href="#基于Vue、SuperMap-iClient-for-Leaflet搭建开发环境" class="headerlink" title="基于Vue、SuperMap iClient for Leaflet搭建开发环境"></a>基于Vue、SuperMap iClient for Leaflet搭建开发环境</h1><h2 id="一、搭建Vue开发环境"><a href="#一、搭建Vue开发环境" class="headerlink" title="一、搭建Vue开发环境"></a>一、搭建Vue开发环境</h2><p>1.下载node.js，<a target="_blank" rel="noopener" href="https://nodejs.org/en">建议使用长期稳定版本</a></p>
+<p>2.安装完毕后，调出命令行窗口，输入下面指令，分别查看node和npm的版本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">node --version</span><br><span class="line"></span><br><span class="line">npm --version</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cug.oss-cn-guangzhou.aliyuncs.com/assets/image-20230427163321046.png" alt="image-20230427163321046"></p>
+<p>3.如果终端窗口输出对应的版本好，说明我们安装成功，可以进行下一步配置。</p>
+<p>4.自定义一个文件夹，并使用vscode打开该文件夹，并使用终端输入指令 <strong>npm init vue@latest</strong> 初始化一个Vue项目  参考<a target="_blank" rel="noopener" href="https://cn.vuejs.org/">官网</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm init vue@latest</span><br></pre></td></tr></table></figure>
+
+<p>然后按自己的要求选择配置信息：我这边只<strong>修改了项目名称</strong>，其他的都是默认设置</p>
+<p><img src="https://cug.oss-cn-guangzhou.aliyuncs.com/assets/image-20230427164049516.png" alt="image-20230427164049516"></p>
+<p>初始化完毕之后，就会生成一个   SuperMap   的文件夹，然后我们进入到生成的文件夹中，输入指令 <strong>npm install</strong>  安装对应的依赖</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install </span><br></pre></td></tr></table></figure>
+
+<p>安装完毕后，输入指令 <strong>npm run dev</strong> 就能把项目跑起来，复制终端生成的 <strong>地址</strong>  ，用浏览器打开就能进行访问</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
+
+<p>停止项目，只需要在终端 键盘键入 <strong>CTRL + C</strong>  即可</p>
+<p>5.在新的项目创建后，需要删除一些无关的文件，进入项目目录，把下面框住的文件全部删除</p>
+<p><img src="https://cug.oss-cn-guangzhou.aliyuncs.com/assets/image-20230427165216029.png" alt="image-20230427165216029"></p>
+<p>在   <strong>App.vue</strong>  文件中，把下面的代码替换里面所有的代码</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;script setup&gt;</span><br><span class="line"></span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;<span class="name">div</span>&gt;</span>hello<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">style</span> <span class="attr">scoped</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<p>在 <strong>main.js</strong>  文件中删除红框中的代码</p>
+<p><img src="https://cug.oss-cn-guangzhou.aliyuncs.com/assets/image-20230427165518598.png" alt="image-20230427165518598"></p>
+<p>重新将项目跑起来，如果页面显示hello说明启动成功了！</p>
+<h2 id="二、导入SuperMap-iClient-for-leaflet-SDK"><a href="#二、导入SuperMap-iClient-for-leaflet-SDK" class="headerlink" title="二、导入SuperMap iClient for leaflet SDK"></a>二、导入SuperMap iClient for leaflet SDK</h2><p>1.找到SuperMap iClient <a target="_blank" rel="noopener" href="https://iclient.supermap.io/">官网</a>，对应的开发插件，每年api都会有更新，建议直接百度搜索SuperMap iClient可以看到最新的版本</p>
+<p>2.安装官网的流程，使用 npm包引入</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install @supermap/iclient-leaflet</span><br></pre></td></tr></table></figure>
+
+<p>然后在项目中的index.html文件中引入样式</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">href</span>=<span class="string">&quot;https://unpkg.com/leaflet@1.7.1/dist/leaflet.css&quot;</span>/&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">href</span>=<span class="string">&quot;https://iclient.supermap.io/dist/leaflet/iclient-leaflet.min.css&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cug.oss-cn-guangzhou.aliyuncs.com/assets/image-20230427170502534.png" alt="image-20230427170502534"></p>
+<p>3.在App.vue中输入下面的代码，然后重新启动项目</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">&lt;script setup&gt;</span><br><span class="line"><span class="keyword">import</span> &#123; onMounted &#125; <span class="keyword">from</span> <span class="string">&quot;vue&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> L <span class="keyword">from</span> <span class="string">&quot;leaflet&quot;</span>;</span><br><span class="line"><span class="comment">// import &#123; TiledMapLayer &#125; from &#x27;@supermap/iclient-leaflet&#x27;;</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">TiledMapLayer</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;@supermap/iclient-leaflet&#x27;</span></span><br><span class="line"><span class="comment">// import &#x27;@supermap/iclient-leaflet&#x27;;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">initMap</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">var</span> url =</span><br><span class="line">    <span class="string">&quot;https://iserver.supermap.io/iserver/services/map-world/rest/maps/World&quot;</span>;</span><br><span class="line">  <span class="comment">// 初始化地图信息</span></span><br><span class="line">  <span class="keyword">var</span> map = L.<span class="title function_">map</span>(<span class="string">&quot;map&quot;</span>, &#123;</span><br><span class="line">    <span class="attr">crs</span>: L.<span class="property">CRS</span>.<span class="property">EPSG4326</span>,</span><br><span class="line">    <span class="attr">center</span>: [<span class="number">0</span>, <span class="number">0</span>],</span><br><span class="line">    <span class="attr">maxZoom</span>: <span class="number">18</span>,</span><br><span class="line">    <span class="attr">zoom</span>: <span class="number">1</span>,</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">new</span> L.<span class="property">supermap</span>.<span class="title class_">TiledMapLayer</span>(url).<span class="title function_">addTo</span>(map);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">onMounted</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="title function_">initMap</span>();</span><br><span class="line">&#125;);</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;map&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">style</span> <span class="attr">scoped</span>&gt;</span><span class="language-css"></span></span></span><br><span class="line"><span class="language-css"><span class="language-xml"><span class="selector-tag">html</span>,</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml"><span class="selector-tag">body</span>,</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml"><span class="selector-id">#map</span> &#123;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">  <span class="attribute">position</span>: relative;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">  <span class="attribute">height</span>: <span class="number">100%</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">  <span class="attribute">width</span>: <span class="number">100%</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">  <span class="attribute">margin</span>: <span class="number">0</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">&#125;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/04/25/Nodejs%E5%90%8E%E7%AB%AF/" rel="prev" title="Nodejs后端">
+                  <i class="fa fa-chevron-left"></i> Nodejs后端
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">LiuZ</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
