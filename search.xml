@@ -51,7 +51,7 @@
 <p><img src="https://cug.oss-cn-guangzhou.aliyuncs.com/assets/image-20230418142905209.png" alt="image-20230418142905209"></p>
 <p><img src="https://cug.oss-cn-guangzhou.aliyuncs.com/assets/image-20230418142914325.png" alt="image-20230418142914325"></p>
 <p>2.打开Linux系统，在安装前对环境进行配置</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">//更新apt源</span><br><span class="line">apt update</span><br><span class="line"></span><br><span class="line">//安装gcc </span><br><span class="line">apt install gcc</span><br><span class="line">apt install g++</span><br><span class="line"></span><br><span class="line">//安装make</span><br><span class="line">apt -y install gcc automake autoconf libtool make</span><br><span class="line"></span><br><span class="line">//安装openGL库</span><br><span class="line">apt install mesa*</span><br><span class="line">apt install freeglut*</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">//更新apt源</span><br><span class="line">apt update</span><br><span class="line"></span><br><span class="line">//安装gcc </span><br><span class="line">apt install gcc</span><br><span class="line">apt install gcc-c++</span><br><span class="line"></span><br><span class="line">//安装make</span><br><span class="line">apt -y install gcc automake autoconf libtool make</span><br><span class="line"></span><br><span class="line">//安装openGL库</span><br><span class="line">apt install mesa*</span><br><span class="line">apt install freeglut*</span><br></pre></td></tr></table></figure>
 
 <p>3.找到下载QT的安装包位置，输入下面的指令</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">// 设置安装包的权限</span><br><span class="line">chmod 777 qt-opensource-linux-x64-5.14.2.run</span><br><span class="line"></span><br><span class="line">//进行安装</span><br><span class="line">./qt-opensource-linux-x64-5.14.2.run</span><br></pre></td></tr></table></figure>
@@ -76,6 +76,7 @@
 <p>10.若有需要可以对g++，gcc的版本进行修改请参考下面的文章</p>
 <p><a href="https://blog.csdn.net/weixin_44092851/article/details/124978302">linux修改gcc和g++的方法</a></p>
 <p><strong>参考：</strong><a href="https://blog.csdn.net/weixin_44092851/article/details/124978823">文章来源</a></p>
+<p>Centos7 安装QT教程：<a href="https://blog.csdn.net/m0_71622680/article/details/131775588">https://blog.csdn.net/m0_71622680/article/details/131775588</a></p>
 ]]></content>
   </entry>
   <entry>
