@@ -77,7 +77,10 @@
 <p><img src="https://cug.oss-cn-guangzhou.aliyuncs.com/assets/image-20230418142225510.png" alt="image-20230418142225510"></p>
 <p>6.重启虚拟机，选择其他账户，输入root用户名和密码即可登录</p>
 <hr>
-<h2 id="Linux下安装QT"><a href="#Linux下安装QT" class="headerlink" title="Linux下安装QT"></a>Linux下安装QT</h2><p>1.下载QT</p>
+<h2 id="Linux下安装QT"><a href="#Linux下安装QT" class="headerlink" title="Linux下安装QT"></a>Linux下安装QT</h2><p>在国产麒麟系统中配置pyside2用下面的指令：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">注意这里  python的版本必须是3.7</span></span><br><span class="line">conda install -c &quot;conda-forge/label/gcc7&quot; pyside2</span><br></pre></td></tr></table></figure>
+
+<p>1.下载QT</p>
 <p>进入<a href="https://download.qt.io/archive/qt/">QT</a>官网下载需要的版本</p>
 <p><img src="https://cug.oss-cn-guangzhou.aliyuncs.com/assets/image-20230418142905209.png" alt="image-20230418142905209"></p>
 <p><img src="https://cug.oss-cn-guangzhou.aliyuncs.com/assets/image-20230418142914325.png" alt="image-20230418142914325"></p>
@@ -108,6 +111,49 @@
 <p><a href="https://blog.csdn.net/weixin_44092851/article/details/124978302">linux修改gcc和g++的方法</a></p>
 <p><strong>参考：</strong><a href="https://blog.csdn.net/weixin_44092851/article/details/124978823">文章来源</a></p>
 <p>Centos7 安装QT教程：<a href="https://blog.csdn.net/m0_71622680/article/details/131775588">https://blog.csdn.net/m0_71622680/article/details/131775588</a></p>
+<h2 id="Centos-安装anaconda"><a href="#Centos-安装anaconda" class="headerlink" title="Centos 安装anaconda"></a>Centos 安装anaconda</h2><p>1.在<a href="https://www.anaconda.com/download">anaconda官网</a>下载对应版本</p>
+<p><img src="https://cug.oss-cn-guangzhou.aliyuncs.com/assets/image-20230804152217578.png" alt="image-20230804152217578"></p>
+<p>2.在下载位置打开Centos终端，执行下面的指令安装anaconda</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">bash Anaconda3-2020.11-Linux-x86_64.sh</span><br></pre></td></tr></table></figure>
+
+<p>按照提示一直确定，直到出现确定安装路径 (<strong>可自定义安装路径</strong>)，等待安装完毕。</p>
+<p><img src="https://cug.oss-cn-guangzhou.aliyuncs.com/assets/image-20230804152848434.png" alt="image-20230804152848434"></p>
+<p>初始化后，执行下面指令，即可正常使用</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">source ~/.bashrc</span><br></pre></td></tr></table></figure>
+
+<p>如果不想显示 <strong>base</strong>，则执行下面的命令</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">不自动激活base环境</span></span><br><span class="line">conda config --set auto_activate_base false</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://blog.csdn.net/LJX_ahut/article/details/114282900">参考文章</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/559103883">Centos Anaconda安装与卸载</a></p>
+<h2 id="在Centos下安装-VsCode（使用子账户安装）"><a href="#在Centos下安装-VsCode（使用子账户安装）" class="headerlink" title="在Centos下安装 VsCode（使用子账户安装）"></a>在Centos下安装 VsCode（使用子账户安装）</h2><p>1.首先登录当前用户的子账户具有sudo权限的用户，如果没有可以通过下面的方法进行简单设置：</p>
+<p>使用root账户，将我们的子账户添加到 <strong>wheel</strong> 组中</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">-a表示追加用户到指定组，-G表示不要将用户从其他组中移除</span></span><br><span class="line">usermod -aG wheel username</span><br></pre></td></tr></table></figure>
+
+<p>验证用户是否加入成功，<strong>切换到子用户</strong>，输入下面的指令</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo whoami</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment">#结果显示 root 则表示添加成功</span></span></span><br></pre></td></tr></table></figure>
+
+<p><a href="https://www.myfreax.com/how-to-add-user-to-sudoers-in-centos/">参考来源</a></p>
+<p>2.切换子账户，依次输入下面的指令</p>
+<p>在CentOS 8系统上安装Visual Studio Code的最简单和推荐的方法是启用VS Code存储库并通过yum命令安装vscode。首先执行rpm命令导入Microsoft GPG密钥：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc</span><br></pre></td></tr></table></figure>
+
+<p>使用Vim打开文件进行编辑：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo vim /etc/yum.repos.d/vscode.repo</span><br></pre></td></tr></table></figure>
+
+<p>将下面的内容粘贴到打开的文件中：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[code]</span><br><span class="line">name=Visual Studio Code</span><br><span class="line">baseurl=https://packages.microsoft.com/yumrepos/vscode</span><br><span class="line">enabled=1</span><br><span class="line">gpgcheck=1</span><br><span class="line">gpgkey=https://packages.microsoft.com/keys/microsoft.asc</span><br></pre></td></tr></table></figure>
+
+<p>保存文件，并输入命令进行安装：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo yum install code</span><br></pre></td></tr></table></figure>
+
+<p>现在vscode已经安装完毕。</p>
+<p>键入 <strong>code</strong> 启动程序，如果报错，是因为权限不够，就切换root账户，修改权限，然后使用子账户重新启动</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">修改权限指令</span></span><br><span class="line">chmod 777 需要修改的文件</span><br></pre></td></tr></table></figure>
+
+<p>如果以  <strong>root权限</strong>  启动，则需要输入下面的指令：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">data2  表示一个指定的位置，可以随意指定</span></span><br><span class="line">code --no-sandbox --user-data-dir=/data2</span><br></pre></td></tr></table></figure>
+
 ]]></content>
   </entry>
   <entry>
