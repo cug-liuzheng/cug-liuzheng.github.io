@@ -78,7 +78,7 @@
 <p>6.重启虚拟机，选择其他账户，输入root用户名和密码即可登录</p>
 <hr>
 <h2 id="Linux下安装QT"><a href="#Linux下安装QT" class="headerlink" title="Linux下安装QT"></a>Linux下安装QT</h2><p>在国产麒麟系统中配置pyside2用下面的指令：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">注意这里  python的版本必须是3.7</span></span><br><span class="line">conda install -c &quot;conda-forge/label/gcc7&quot; pyside2</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">注意这里  python的版本必须是3.7</span></span><br><span class="line">conda install -c &quot;conda-forge/label/gcc7&quot; pyside2</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">最新消息，上面的指令可以不参考，只要python大于等于3.8版本的，可以直接使用conda指令安装pyside2和cartopy两个库</span></span><br></pre></td></tr></table></figure>
 
 <p>1.下载QT</p>
 <p>进入<a href="https://download.qt.io/archive/qt/">QT</a>官网下载需要的版本</p>
@@ -154,6 +154,17 @@
 <p>如果以  <strong>root权限</strong>  启动，则需要输入下面的指令：</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">data2  表示一个指定的位置，可以随意指定</span></span><br><span class="line">code --no-sandbox --user-data-dir=/data2</span><br></pre></td></tr></table></figure>
 
+<hr>
+<h2 id="anaconda配置-cartopy-环境"><a href="#anaconda配置-cartopy-环境" class="headerlink" title="anaconda配置 cartopy 环境"></a>anaconda配置 cartopy 环境</h2><p>依次输入下面的三条指令：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">这里环境中使用的python 为3.7版本的</span></span><br><span class="line">conda install geos</span><br><span class="line">conda install pyshp</span><br><span class="line">conda install shapely</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">查看shapely库的版本</span></span><br><span class="line">conda list shapely</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">继续安装 cartopy</span></span><br><span class="line">conda install cartopy</span><br><span class="line"></span><br><span class="line">conda list cartopy</span><br></pre></td></tr></table></figure>
+
+<p>（上面的不一定有用），这个操作仅<strong>限于国产麒麟系统</strong>，最新操作（可能）：<em><strong>这个方法最后再用</strong></em></p>
+<p>1.先安装 geos，直接 yum install geos</p>
+<p>2.再安装 proj，直接 yum install proj</p>
+<p>3.安装 yum install geos-devel</p>
+<p>4.直接去cartopy官网的conda安装指令即可</p>
+<p>第三步参考这个：<a href="https://blog.csdn.net/weixin_36033884/article/details/116887975">https://blog.csdn.net/weixin_36033884/article/details/116887975</a></p>
+<p>第一步和第二步参考这个：<a href="https://www.bilibili.com/video/BV1WF411A7rx/?spm_id_from=333.999.0.0&vd_source=9c197626a7aa78cb9eec601cfd137fae">https://www.bilibili.com/video/BV1WF411A7rx/?spm_id_from=333.999.0.0&amp;vd_source=9c197626a7aa78cb9eec601cfd137fae</a></p>
 ]]></content>
   </entry>
   <entry>
